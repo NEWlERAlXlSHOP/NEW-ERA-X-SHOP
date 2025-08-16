@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин PUBG</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Oswald', sans-serif;
+            background-color: #0d0d0d;
+            color: #f0f0f0;
+        }
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+        }
+        .hero-bg-accounts {
+            background-image: url('https://placehold.co/1920x1080/0d0d0d/87ceeb?text=Cyber+Battleground');
+        }
+        .hero-bg-uc {
+            background-image: url('https://placehold.co/1920x1080/0d0d0d/87ceeb?text=NEW+ERA+X');
+        }
+        .hero-bg-accounts, .hero-bg-uc {
+            background-size: cover;
+            background-position: center;
+        }
+        .product-card {
+            background-color: #1a1a1a;
+            border: 2px solid #2d2d2d;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .product-card-uc {
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.1);
+        }
+        .product-card:hover {
+            border-color: #00ffff;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 255, 255, 0.2);
+        }
+        .product-card-uc:hover {
+            border-color: #ff00ff;
+            box-shadow: 0 5px 20px rgba(255, 0, 255, 0.2);
+        }
+        .buy-button {
+            background-color: #00ffff;
+            color: #1a1a1a;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+        .buy-button-uc {
+            background-color: #ff00ff;
+        }
+        .buy-button:hover {
+            background-color: #00e6e6;
+            transform: scale(1.05);
+        }
+        .buy-button-uc:hover {
+            background-color: #e600e6;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Header Section -->
+    <header class="w-full bg-black/80 backdrop-blur-sm fixed top-0 left-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Dynamic title based on current page -->
+            <div class="flex items-center space-x-2">
+                <span id="shop-name" class="text-3xl font-bold tracking-widest text-cyan-400">PUBG</span>
+                <span id="shop-title" class="text-3xl font-light tracking-widest text-white">АККАУНТЫ</span>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8 text-sm font-semibold uppercase tracking-wide">
+                <a href="#accounts" class="nav-link hover:text-cyan-400 transition-colors">Аки</a>
+                <a href="#about" class="nav-link hover:text-cyan-400 transition-colors">О нас</a>
+                <a href="#contact" class="nav-link hover:text-cyan-400 transition-colors">Контакты</a>
+                <!-- Button to switch pages -->
+                <button id="switch-page-btn" class="px-4 py-2 bg-red-600 rounded-md text-white hover:bg-red-700 transition-colors">NEW ERA X</button>
+            </nav>
+            <button id="menu-btn" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden w-full bg-black/80 px-4 py-2">
+            <a href="#accounts" class="nav-link block py-2 text-center text-cyan-400 font-semibold uppercase">Аки</a>
+            <a href="#about" class="nav-link block py-2 text-center text-cyan-400 font-semibold uppercase">О нас</a>
+            <a href="#contact" class="nav-link block py-2 text-center text-cyan-400 font-semibold uppercase">Контакты</a>
+            <button id="switch-page-btn-mobile" class="block w-full py-2 bg-red-600 rounded-md text-white hover:bg-red-700 transition-colors uppercase">NEW ERA X</button>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Accounts Store Section (initially visible) -->
+        <div id="accounts-store" class="page-content">
+            <!-- Hero Section for Accounts -->
+            <section class="relative w-full h-screen flex items-center justify-center text-center overflow-hidden hero-bg-accounts">
+                <div class="absolute inset-0 bg-black opacity-60"></div>
+                <div class="relative z-10 px-4 max-w-4xl mx-auto">
+                    <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold uppercase tracking-wider text-white text-shadow">
+                        <span class="text-cyan-400">ПОЛУЧИТЕ</span> СВОЙ АККАУНТ
+                    </h1>
+                    <p class="text-lg sm:text-xl md:text-2xl font-medium uppercase mt-4 mb-8 text-gray-300">
+                        КОЛЛЕКЦИЯ РЕДКИХ И ЭКСКЛЮЗИВНЫХ АККАУНТОВ
+                    </p>
+                    <a href="#accounts" class="px-8 py-4 bg-cyan-400 text-black font-semibold rounded-full shadow-lg hover:bg-cyan-500 transition-colors duration-300">
+                        ПОСМОТРЕТЬ КОЛЛЕКЦИЮ
+                    </a>
+                </div>
+            </section>
+
+            <!-- Accounts Grid -->
+            <section id="accounts" class="py-16 md:py-24 px-4 bg-gray-950">
+                <div class="container mx-auto">
+                    <h2 class="text-4xl font-bold uppercase text-center mb-12 text-white">НАША КОЛЛЕКЦИЯ</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="product-card rounded-xl p-6 text-center">
+                            <div class="flex flex-col items-center">
+                                <img src="https://im.ge/i/FhFq1P" alt="Скин Cyber-Maiden" class="w-full h-auto rounded-lg mb-4">
+                                <h3 class="text-2xl font-bold uppercase text-cyan-400 mb-2">АККАУНТ С CYBER-MAIDEN</h3>
+                                <p class="text-xl font-medium text-gray-300 mb-4">Редкий аккаунт</p>
+                                <span class="text-2xl font-bold text-white mb-4">$29.99</span>
+                                <button class="w-full py-3 rounded-md buy-button">
+                                    КУПИТЬ
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-card rounded-xl p-6 text-center">
+                            <div class="flex flex-col items-center">
+                                <img src="https://placehold.co/600x400/333/00ffff?text=АККАУНТ" alt="Аккаунт 'Night Hunter'" class="w-full h-auto rounded-lg mb-4">
+                                <h3 class="text-2xl font-bold uppercase text-cyan-400 mb-2">АККАУНТ NIGHT HUNTER</h3>
+                                <p class="text-xl font-medium text-gray-300 mb-4">Элитный аккаунт</p>
+                                <span class="text-2xl font-bold text-white mb-4">$49.99</span>
+                                <button class="w-full py-3 rounded-md buy-button">
+                                    КУПИТЬ
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-card rounded-xl p-6 text-center">
+                            <div class="flex flex-col items-center">
+                                <img src="https://placehold.co/600x400/333/00ffff?text=АККАУНТ" alt="Аккаунт 'Crimson Dragon'" class="w-full h-auto rounded-lg mb-4">
+                                <h3 class="text-2xl font-bold uppercase text-cyan-400 mb-2">АККАУНТ С CRIMSON DRAGON</h3>
+                                <p class="text-xl font-medium text-gray-300 mb-4">Легендарный аккаунт</p>
+                                <span class="text-2xl font-bold text-white mb-4">$99.99</span>
+                                <button class="w-full py-3 rounded-md buy-button">
+                                    КУПИТЬ
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-card rounded-xl p-6 text-center">
+                            <div class="flex flex-col items-center">
+                                <img src="https://placehold.co/600x400/333/00ffff?text=АККАУНТ" alt="Аккаунт 'Ghost Trooper'" class="w-full h-auto rounded-lg mb-4">
+                                <h3 class="text-2xl font-bold uppercase text-cyan-400 mb-2">АККАУНТ GHOST TROOPER</h3>
+                                <p class="text-xl font-medium text-gray-300 mb-4">Мифический аккаунт</p>
+                                <span class="text-2xl font-bold text-white mb-4">$149.99</span>
+                                <button class="w-full py-3 rounded-md buy-button">
+                                    КУПИТЬ
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- UC Store Section (initially hidden) -->
+        <div id="uc-store" class="page-content hidden">
+            <!-- Hero Section for UC -->
+            <section class="relative w-full h-screen flex items-center justify-center text-center overflow-hidden hero-bg-uc">
+                <div class="absolute inset-0 bg-black opacity-60"></div>
+                <div class="relative z-10 px-4 max-w-4xl mx-auto">
+                    <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold uppercase tracking-wider text-white text-shadow">
+                        <span class="text-pink-500">NEW ERA</span> X
+                    </h1>
+                    <p class="text-lg sm:text-xl md:text-2xl font-medium uppercase mt-4 mb-8 text-gray-300">
+                        UC — БЫСТРО И ЧЕСТНО
+                    </p>
+                    <a href="#uc" class="px-8 py-4 bg-pink-500 text-black font-semibold rounded-full shadow-lg hover:bg-pink-600 transition-colors duration-300">
+                        ПОСМОТРЕТЬ ПАКЕТЫ
+                    </a>
+                </div>
+            </section>
+
+            <!-- UC Grid -->
+            <section id="uc" class="py-16 md:py-24 px-4 bg-gray-950">
+                <div class="container mx-auto">
+                    <h2 class="text-4xl font-bold uppercase text-center mb-12 text-white">ПАКЕТЫ UC</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="product-card product-card-uc rounded-xl p-6 text-center">
+                            <div class="flex flex-col items-center">
+                                <img src="https://placehold.co/600x400/333/ff00ff?text=100+UC" alt="100 UC" class="w-full h-auto rounded-lg mb-4">
+                                <h3 class="text-2xl font-bold uppercase text-pink-500 mb-2">100 UC</h3>
+                                <p class="text-xl font-medium text-gray-300 mb-4">Быстро и Честно</p>
+                                <span class="text-2xl font-bold text-white mb-4">$4.00</span>
+                                <button class="w-full py-3 rounded-md buy-button buy-button-uc">
+                                    КУПИТЬ
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-card product-card-uc rounded-xl p-6 text-center">
+                            <div class="flex flex-col items-center">
+                                <img src="https://placehold.co/600x400/333/ff00ff?text=200+UC" alt="200 UC" class="w-full h-auto rounded-lg mb-4">
+                                <h3 class="text-2xl font-bold uppercase text-pink-500 mb-2">200 UC</h3>
+                                <p class="text-xl font-medium text-gray-300 mb-4">Быстро и Честно</p>
+                                <span class="text-2xl font-bold text-white mb-4">$7.00</span>
+                                <button class="w-full py-3 rounded-md buy-button buy-button-uc">
+                                    КУПИТЬ
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-card product-card-uc rounded-xl p-6 text-center">
+                            <div class="flex flex-col items-center">
+                                <img src="https://placehold.co/600x400/333/ff00ff?text=500+UC" alt="500 UC" class="w-full h-auto rounded-lg mb-4">
+                                <h3 class="text-2xl font-bold uppercase text-pink-500 mb-2">500 UC</h3>
+                                <p class="text-xl font-medium text-gray-300 mb-4">Быстро и Честно</p>
+                                <span class="text-2xl font-bold text-white mb-4">$14.00</span>
+                                <button class="w-full py-3 rounded-md buy-button buy-button-uc">
+                                    КУПИТЬ
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-card product-card-uc rounded-xl p-6 text-center">
+                            <div class="flex flex-col items-center">
+                                <img src="https://placehold.co/600x400/333/ff00ff?text=1000+UC" alt="1000 UC" class="w-full h-auto rounded-lg mb-4">
+                                <h3 class="text-2xl font-bold uppercase text-pink-500 mb-2">1000 UC</h3>
+                                <p class="text-xl font-medium text-gray-300 mb-4">Быстро и Честно</p>
+                                <span class="text-2xl font-bold text-white mb-4">$25.00</span>
+                                <button class="w-full py-3 rounded-md buy-button buy-button-uc">
+                                    КУПИТЬ
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 md:py-24 px-4 bg-gray-900">
+            <div class="container mx-auto">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0">
+                        <h2 class="text-3xl md:text-4xl font-bold uppercase mb-4 text-white">О НАС</h2>
+                        <p class="text-gray-400 leading-relaxed font-light">
+                            Мы предлагаем быстрый и безопасный способ покупки. Мы стремимся обеспечить лучшие цены и безупречный сервис, чтобы вы могли наслаждаться игрой без каких-либо перебоев. Наша цель - сделать доступ к предметам простым и удобным для каждого.
+                        </p>
+                    </div>
+                    <div class="md:w-1/2">
+                        <img src="https://placehold.co/600x400/333/00ffff?text=TACTICAL+ADVANTAGE" alt="О нас" class="w-full h-auto rounded-xl shadow-lg border-2 border-cyan-400">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 md:py-24 px-4 bg-gray-950">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold uppercase mb-4 text-white">СВЯЖИТЕСЬ С НАМИ</h2>
+                <p class="text-gray-400 mb-8 font-light">
+                    У вас есть вопросы? Не стесняйтесь обращаться.
+                </p>
+                <div class="flex flex-col items-center justify-center space-y-4">
+                    <a href="mailto:zakaryanmaik44gmail.com" class="text-cyan-400 text-lg hover:underline transition-colors uppercase">
+                        zakaryanmaik44gmail.com
+                    </a>
+                    <a href="#" class="text-cyan-400 text-lg hover:underline transition-colors uppercase">
+                        091152197
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="w-full bg-black/80 backdrop-blur-sm py-8 px-4 mt-auto">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div class="mb-4 md:mb-0">
+                <p class="text-gray-400 text-sm font-light">&copy; 2024 PUBG Shop. Все права защищены.</p>
+            </div>
+            <div class="flex space-x-6 text-sm font-light uppercase">
+                <a href="#about" class="text-gray-400 hover:text-cyan-400 transition-colors">О нас</a>
+                <a href="#contact" class="text-gray-400 hover:text-cyan-400 transition-colors">Контакты</a>
+                <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors">Условия обслуживания</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Get references to elements
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const accountsStore = document.getElementById('accounts-store');
+        const ucStore = document.getElementById('uc-store');
+        const switchPageBtn = document.getElementById('switch-page-btn');
+        const switchPageBtnMobile = document.getElementById('switch-page-btn-mobile');
+        const shopName = document.getElementById('shop-name');
+        const shopTitle = document.getElementById('shop-title');
+        const aboutSection = document.getElementById('about');
+        const contactSection = document.getElementById('contact');
+
+        // Initial state
+        let isUcPage = false;
+        
+        // Function to switch between pages
+        function switchPage() {
+            if (isUcPage) {
+                // Switch to Accounts Page
+                accountsStore.classList.remove('hidden');
+                ucStore.classList.add('hidden');
+                switchPageBtn.textContent = 'NEW ERA X';
+                switchPageBtnMobile.textContent = 'NEW ERA X';
+                shopName.textContent = 'PUBG';
+                shopName.classList.remove('text-pink-500');
+                shopName.classList.add('text-cyan-400');
+                shopTitle.textContent = 'АККАУНТЫ';
+                aboutSection.classList.remove('bg-gray-900');
+                aboutSection.classList.add('bg-gray-900');
+                contactSection.classList.remove('bg-gray-950');
+                contactSection.classList.add('bg-gray-950');
+            } else {
+                // Switch to UC Page
+                accountsStore.classList.add('hidden');
+                ucStore.classList.remove('hidden');
+                switchPageBtn.textContent = 'МАГАЗИН АККАУНТОВ';
+                switchPageBtnMobile.textContent = 'МАГАЗИН АККАУНТОВ';
+                shopName.textContent = 'NEW ERA';
+                shopName.classList.remove('text-cyan-400');
+                shopName.classList.add('text-pink-500');
+                shopTitle.textContent = 'X';
+                aboutSection.classList.remove('bg-gray-900');
+                aboutSection.classList.add('bg-gray-900');
+                contactSection.classList.remove('bg-gray-950');
+                contactSection.classList.add('bg-gray-950');
+            }
+            isUcPage = !isUcPage;
+        }
+
+        // Add event listeners for the page switch buttons
+        switchPageBtn.addEventListener('click', switchPage);
+        switchPageBtnMobile.addEventListener('click', switchPage);
+
+        // Mobile menu toggle
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Simple smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
