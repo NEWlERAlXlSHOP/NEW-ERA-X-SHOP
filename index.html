@@ -1,564 +1,481 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Магазин PUBG</title>
-    <!-- Подключаем Tailwind CSS для красивого дизайна -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Подключаем шрифты для кибер-стиля -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* Базовые стили для всего тела */
-        body {
-            font-family: 'Oswald', sans-serif;
-            background-color: #0d0d0d;
-            color: #f0f0f0;
-        }
-        /* Стиль для заголовков */
-        h1, h2, h3 {
-            font-family: 'Orbitron', sans-serif;
-        }
-        /* Стили для фоновых изображений в секциях-героях */
-        .hero-bg-accounts {
-            background-image: url('https://placehold.co/1920x1080/0d0d0d/87ceeb?text=Cyber+Battleground');
-        }
-        .hero-bg-uc {
-            background-image: url('https://placehold.co/1920x1080/0d0d0d/87ceeb?text=NEW+ERA+X');
-        }
-        .hero-bg-accounts, .hero-bg-uc {
-            background-size: cover;
-            background-position: center;
-        }
-        /* Стиль для карточек продуктов */
-        .product-card {
-            background-color: #1a1a1a;
-            border: 2px solid #2d2d2d;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-        .product-card-uc {
-            box-shadow: 0 0 15px rgba(255, 0, 255, 0.1);
-        }
-        .product-card:hover {
-            border-color: #00ffff;
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0, 255, 255, 0.2);
-        }
-        .product-card-uc:hover {
-            border-color: #ff00ff;
-            box-shadow: 0 5px 20px rgba(255, 0, 255, 0.2);
-        }
-        /* Стиль для кнопок "Купить" */
-        .buy-button {
-            background-color: #00ffff;
-            color: #1a1a1a;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-        }
-        .buy-button-uc {
-            background-color: #ff00ff;
-        }
-        .buy-button:hover {
-            background-color: #00e6e6;
-            transform: scale(1.05);
-        }
-        .buy-button-uc:hover {
-            background-color: #e600e6;
-        }
+<!DOCTYPE html> 
+<html lang="ru"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Магазин PUBG</title> 
+    <!-- Подключаем Tailwind CSS для красивого дизайна --> 
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <!-- Подключаем шрифты для кибер-стиля --> 
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet"> 
+    <!-- Подключаем иконки флагов --> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+    <style> 
+        /* Базовые стили для всего тела */ 
+        body { 
+            font-family: 'Oswald', sans-serif; 
+            background-color: #0d0d0d; 
+            color: #f0f0f0; 
+        } 
+        /* Стиль для заголовков */ 
+        h1, h2, h3 { 
+            font-family: 'Orbitron', sans-serif; 
+        } 
+        /* Стили для фоновых изображений в секциях-героях */ 
+        .hero-bg-accounts { 
+            background-image: url('https://placehold.co/1920x1080/0d0d0d/87ceeb?text=Cyber+Battleground'); 
+        } 
+        .hero-bg-uc { 
+            background-image: url('https://placehold.co/1920x1080/0d0d0d/87ceeb?text=NEW+ERA+X'); 
+        } 
+        .hero-bg-accounts, .hero-bg-uc { 
+            background-size: cover; 
+            background-position: center; 
+        } 
+        /* Стиль для карточек продуктов */ 
+        .product-card { 
+            background-color: #1a1a1a; 
+            border: 2px solid #2d2d2d; 
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1); 
+            transition: all 0.3s ease; 
+        } 
+        .product-card-uc { 
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.1); 
+        } 
+        .product-card:hover { 
+            border-color: #00ffff; 
+            transform: translateY(-5px); 
+            box-shadow: 0 5px 20px rgba(0, 255, 255, 0.2); 
+        } 
+        .product-card-uc:hover { 
+            border-color: #ff00ff; 
+            box-shadow: 0 5px 20px rgba(255, 0, 255, 0.2); 
+        } 
+        /* Стиль для кнопок "Купить" */ 
+        .buy-button { 
+            background-color: #00ffff; 
+            color: #1a1a1a; 
+            font-weight: bold; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            transition: all 0.3s ease; 
+        } 
+        .buy-button-uc { 
+            background-color: #ff00ff; 
+        } 
+        .buy-button:hover { 
+            background-color: #00e6e6; 
+            transform: scale(1.05); 
+        } 
+        .buy-button-uc:hover { 
+            background-color: #e600e6; 
+        } 
 
-        /* Стили для модального окна */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(5px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
+        /* Стили для модального окна */ 
+        .modal-overlay { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0, 0, 0, 0.75); 
+            backdrop-filter: blur(5px); 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            z-index: 1000; 
+        } 
+
+        .modal-content { 
+            background-color: #1a1a1a; 
+            border: 2px solid #333; 
+            border-radius: 12px; 
+            padding: 32px; 
+            text-align: center; 
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3); 
+            max-width: 400px; 
+            width: 90%; 
+            position: relative; 
+        } 
+
+        .close-button { 
+            position: absolute; 
+            top: 10px; 
+            right: 10px; 
+            background: none; 
+            border: none; 
+            color: #fff; 
+            font-size: 24px; 
+            cursor: pointer; 
+        } 
+        
+        /* Стили для флагов в кнопках языка */
+        .flag-icon {
+            margin-right: 8px;
+            box-shadow: 0 0 3px rgba(0,0,0,0.3);
         }
+    </style> 
+</head> 
+<body class="flex flex-col min-h-screen"> 
 
-        .modal-content {
-            background-color: #1a1a1a;
-            border: 2px solid #333;
-            border-radius: 12px;
-            padding: 32px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
-            max-width: 400px;
-            width: 90%;
-            position: relative;
-        }
+    <!-- Модальное окно для выбора мессенджера --> 
+    <div id="contact-modal" class="modal-overlay hidden"> 
+        <div class="modal-content"> 
+            <button id="close-modal-btn" class="close-button">&times;</button> 
+            <h3 class="text-2xl font-bold mb-6" data-lang-key="modal-title">Свяжитесь с нами</h3> 
+            <p class="text-gray-400 mb-6" data-lang-key="modal-subtitle">Выберите удобный способ связи</p> 
+            <div class="flex flex-col space-y-4"> 
+                <a href="https://t.me/Zaqaryan_Miqo" target="_blank" class="w-full py-4 bg-blue-500 rounded-lg text-white font-bold uppercase hover:bg-blue-600 transition-colors"> 
+                    Telegram 
+                </a> 
+                <a href="https://wa.me/37491152197" target="_blank" class="w-full py-4 bg-green-500 rounded-lg text-white font-bold uppercase hover:bg-green-600 transition-colors"> 
+                    WhatsApp 
+                </a> 
+                <!-- Добавлена ссылка на почту --> 
+                <a href="mailto:zakaryanmaik44@gmail.com" class="w-full py-4 bg-red-500 rounded-lg text-white font-bold uppercase hover:bg-red-600 transition-colors"> 
+                    Email 
+                </a> 
+            </div> 
+        </div> 
+    </div> 
 
-        .close-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 24px;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body class="flex flex-col min-h-screen">
+    <!-- Header Section --> 
+    <header class="w-full bg-black/80 backdrop-blur-sm fixed top-0 left-0 z-50"> 
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center"> 
+            <!-- Динамический заголовок в зависимости от страницы --> 
+            <div class="flex items-center space-x-2"> 
+                <span id="shop-name" class="text-3xl font-bold tracking-widest text-cyan-400">PUBG</span> 
+                <span id="shop-title" class="text-3xl font-light tracking-widest text-white">АККАУНТЫ</span> 
+            </div> 
+             
+            <nav class="hidden md:flex space-x-8 text-sm font-semibold uppercase tracking-wide"> 
+                <!-- Добавлена новая ссылка на чат --> 
+                <a href="https://t.me/NewEraXshopChat" target="_blank" class="nav-link hover:text-green-400 transition-colors" data-lang-key="nav-chat">TG SHOP CHAT</a> 
+                <a href="#accounts" class="nav-link hover:text-cyan-400 transition-colors" data-lang-key="nav-accounts">Аки</a> 
+                <a href="#about" class="nav-link hover:text-cyan-400 transition-colors" data-lang-key="nav-about">О нас</a> 
+                <a href="#contact" class="nav-link hover:text-cyan-400 transition-colors" data-lang-key="nav-contact">Контакты</a> 
+                <!-- Кнопка для переключения языка --> 
+                <button id="lang-button" class="px-4 py-2 bg-green-500 rounded-md text-black hover:bg-green-600 transition-colors shadow-lg shadow-green-500/50 flex items-center" data-lang-key="lang-button">
+                    <span class="flag-icon flag-icon-ru"></span>
+                    <span>РУС</span>
+                </button> 
+                <!-- Кнопка для переключения между страницами --> 
+                <button id="switch-page-btn" class="px-4 py-2 bg-red-600 rounded-md text-white hover:bg-red-700 transition-colors">NEW ERA X UC</button> 
+            </nav> 
+            <button id="menu-btn" class="md:hidden text-white"> 
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8"> 
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /> 
+                </svg> 
+            </button> 
+        </div> 
+        <!-- Мобильное меню --> 
+        <div id="mobile-menu" class="hidden md:hidden w-full bg-black/80 px-4 py-2"> 
+            <!-- Добавлена новая ссылка на чат в мобильном меню --> 
+            <a href="https://t.me/NewEraXshopChat" target="_blank" class="nav-link block py-2 text-center text-green-400 font-semibold uppercase" data-lang-key="nav-chat">TG SHOP CHAT</a> 
+            <a href="#accounts" class="nav-link block py-2 text-center text-cyan-400 font-semibold uppercase" data-lang-key="nav-accounts">Аки</a> 
+            <a href="#about" class="nav-link block py-2 text-center text-cyan-400 font-semibold uppercase" data-lang-key="nav-about">О нас</a> 
+            <a href="#contact" class="nav-link block py-2 text-center text-cyan-400 font-semibold uppercase" data-lang-key="nav-contact">Контакты</a> 
+            <!-- Кнопка для переключения языка в мобильном меню --> 
+            <button id="lang-button-mobile" class="block w-full py-2 bg-green-500 rounded-md text-black hover:bg-green-600 transition-colors uppercase mt-2 shadow-lg shadow-green-500/50 flex items-center justify-center">
+                <span class="flag-icon flag-icon-ru"></span>
+                <span>РУС</span>
+            </button> 
+            <button id="switch-page-btn-mobile" class="block w-full py-2 bg-red-600 rounded-md text-white hover:bg-red-700 transition-colors uppercase mt-2">NEW ERA X UC</button> 
+        </div> 
+    </header> 
 
-    <!-- Модальное окно для выбора мессенджера -->
-    <div id="contact-modal" class="modal-overlay hidden">
-        <div class="modal-content">
-            <button id="close-modal-btn" class="close-button">&times;</button>
-            <h3 class="text-2xl font-bold mb-6" data-lang-key="modal-title">Свяжитесь с нами</h3>
-            <p class="text-gray-400 mb-6" data-lang-key="modal-subtitle">Выберите удобный способ связи</p>
-            <div class="flex flex-col space-y-4">
-                <a href="https://t.me/Zaqaryan_Miqo" target="_blank" class="w-full py-4 bg-blue-500 rounded-lg text-white font-bold uppercase hover:bg-blue-600 transition-colors">
-                    Telegram
-                </a>
-                <a href="https://wa.me/37491152197" target="_blank" class="w-full py-4 bg-green-500 rounded-lg text-white font-bold uppercase hover:bg-green-600 transition-colors">
-                    WhatsApp
-                </a>
-            </div>
-        </div>
-    </div>
+    <main class="flex-grow"> 
+        <!-- Секция магазина аккаунтов (изначально видна) --> 
+        <div id="accounts-store" class="page-content"> 
+            <!-- Секция-герой для аккаунтов --> 
+            <section class="relative w-full h-screen flex items-center justify-center text-center overflow-hidden hero-bg-accounts"> 
+                <div class="absolute inset-0 bg-black opacity-60"></div> 
+                <div class="relative z-10 px-4 max-w-4xl mx-auto"> 
+                    <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold uppercase tracking-wider text-white text-shadow"> 
+                        <span id="hero-title-accounts-part1" class="text-cyan-400" data-lang-key="hero-title-accounts-part1">ПОЛУЧИТЕ</span> <span id="hero-title-accounts-part2" data-lang-key="hero-title-accounts-part2">СВОЙ АККАУНТ</span> 
+                    </h1> 
+                    <p id="hero-subtitle-accounts" class="text-lg sm:text-xl md:text-2xl font-medium uppercase mt-4 mb-8 text-gray-300" data-lang-key="hero-subtitle-accounts"> 
+                        КОЛЛЕКЦИЯ РЕДКИХ И ЭКСКЛЮЗИВНЫХ АККАУНТОВ 
+                    </p> 
+                    <a href="#accounts" id="hero-button-accounts" class="px-8 py-4 bg-cyan-400 text-black font-semibold rounded-full shadow-lg hover:bg-cyan-500 transition-colors duration-300" data-lang-key="hero-button-accounts"> 
+                        ПОСМОТРЕТЬ КОЛЛЕКЦИЮ 
+                    </a> 
+                </div> 
+            </section> 
 
-    <!-- Header Section -->
-    <header class="w-full bg-black/80 backdrop-blur-sm fixed top-0 left-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <!-- Динамический заголовок в зависимости от страницы -->
-            <div class="flex items-center space-x-2">
-                <span id="shop-name" class="text-3xl font-bold tracking-widest text-cyan-400">PUBG</span>
-                <span id="shop-title" class="text-3xl font-light tracking-widest text-white">АККАУНТЫ</span>
-            </div>
-            
-            <nav class="hidden md:flex space-x-8 text-sm font-semibold uppercase tracking-wide">
-                <a href="#accounts" class="nav-link hover:text-cyan-400 transition-colors" data-lang-key="nav-accounts">Аки</a>
-                <a href="#about" class="nav-link hover:text-cyan-400 transition-colors" data-lang-key="nav-about">О нас</a>
-                <a href="#contact" class="nav-link hover:text-cyan-400 transition-colors" data-lang-key="nav-contact">Контакты</a>
-                <!-- Кнопка для переключения языка -->
-                <button id="lang-button" class="px-4 py-2 bg-green-500 rounded-md text-black hover:bg-green-600 transition-colors shadow-lg shadow-green-500/50" data-lang-key="lang-button">ՀԱՅԵՐԵՆ</button>
-                <!-- Кнопка для переключения между страницами -->
-                <button id="switch-page-btn" class="px-4 py-2 bg-red-600 rounded-md text-white hover:bg-red-700 transition-colors">NEW ERA X UC</button>
-            </nav>
-            <button id="menu-btn" class="md:hidden text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
-            </button>
-        </div>
-        <!-- Мобильное меню -->
-        <div id="mobile-menu" class="hidden md:hidden w-full bg-black/80 px-4 py-2">
-            <a href="#accounts" class="nav-link block py-2 text-center text-cyan-400 font-semibold uppercase" data-lang-key="nav-accounts">Аки</a>
-            <a href="#about" class="nav-link block py-2 text-center text-cyan-400 font-semibold uppercase" data-lang-key="nav-about">О нас</a>
-            <a href="#contact" class="nav-link block py-2 text-center text-cyan-400 font-semibold uppercase" data-lang-key="nav-contact">Контакты</a>
-            <!-- Кнопка для переключения языка в мобильном меню -->
-            <button id="lang-button-mobile" class="block w-full py-2 bg-green-500 rounded-md text-black hover:bg-green-600 transition-colors uppercase mt-2 shadow-lg shadow-green-500/50" data-lang-key="lang-button">ՀԱՅԵՐԵՆ</button>
-            <button id="switch-page-btn-mobile" class="block w-full py-2 bg-red-600 rounded-md text-white hover:bg-red-700 transition-colors uppercase mt-2">NEW ERA X UC</button>
-        </div>
-    </header>
+            <!-- Сетка аккаунтов --> 
+            <section id="accounts" class="py-16 md:py-24 px-4 bg-gray-950"> 
+                <div class="container mx-auto"> 
+                    <h2 id="accounts-section-title" class="text-4xl font-bold uppercase text-center mb-12 text-white" data-lang-key="accounts-section-title">НАША КОЛЛЕКЦИЯ</h2> 
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"> 
+                        <div class="product-card rounded-xl p-6 text-center"> 
+                            <div class="flex flex-col items-center"> 
+                                <img src="https://im.ge/i/FhFq1P" alt="Скин Cyber-Maiden" class="w-full h-auto rounded-lg mb-4"> 
+                                <h3 class="text-2xl font-bold uppercase text-cyan-400 mb-2" data-lang-key="product-title-1">АККАУНТ С CYBER-MAIDEN</h3> 
+                                <p class="text-xl font-medium text-gray-300 mb-4" data-lang-key="product-desc-1">Редкий аккаунт</p> 
+                                <span class="text-2xl font-bold text-white mb-4">$29.99</span> 
+                                <button class="w-full py-3 rounded-md buy-button" data-lang-key="buy-button"> 
+                                    КУПИТЬ 
+                                </button> 
+                            </div> 
+                        </div> 
+                        <div class="product-card rounded-xl p-6 text-center"> 
+                            <div class="flex flex-col items-center"> 
+                                <img src="https://placehold.co/600x400/333/00ffff?text=АККАУНТ" alt="Аккаунт 'Night Hunter'" class="w-full h-auto rounded-lg mb-4"> 
+                                <h3 class="text-2xl font-bold uppercase text-cyan-400 mb-2" data-lang-key="product-title-2">АККАУНТ NIGHT HUNTER</h3> 
+                                <p class="text-xl font-medium text-gray-300 mb-4" data-lang-key="product-desc-2">Элитный аккаунт</p> 
+                                <span class="text-2xl font-bold text-white mb-4">$49.99</span> 
+                                <button class="w-full py-3 rounded-md buy-button" data-lang-key="buy-button"> 
+                                    КУПИТЬ 
+                                </button> 
+                            </div> 
+                        </div> 
+                        <div class="product-card rounded-xl p-6 text-center"> 
+                            <div class="flex flex-col items-center"> 
+                                <img src="https://placehold.co/600x400/333/00ffff?text=АККАУНТ" alt="Аккаунт 'Crimson Dragon'" class="w-full h-auto rounded-lg mb-4"> 
+                                <h3 class="text-2xl font-bold uppercase text-cyan-400 mb-2" data-lang-key="product-title-3">АККАУНТ С CRIMSON DRAGON</h3> 
+                                <p class="text-xl font-medium text-gray-300 mb-4" data-lang-key="product-desc-3">Легендарный аккаунт</p> 
+                                <span class="text-2xl font-bold text-white mb-4">$99.99</span> 
+                                <button class="w-full py-3 rounded-md buy-button" data-lang-key="buy-button"> 
+                                    КУПИТЬ 
+                                </button> 
+                            </div> 
+                        </div> 
+                        <div class="product-card rounded-xl p-6 text-center"> 
+                            <div class="flex flex-col items-center"> 
+                                <img src="https://placehold.co/600x400/333/00ffff?text=АККАУНТ" alt="Аккаунт 'Ghost Trooper'" class="w-full h-auto rounded-lg mb-4"> 
+                                <h3 class="text-2xl font-bold uppercase text-cyan-400 mb-2" data-lang-key="product-title-4">АККАУНТ GHOST TROOPER</h3> 
+                                <p class="text-xl font-medium text-gray-300 mb-4" data-lang-key="product-desc-4">Мифический аккаунт</p> 
+                                <span class="text-2xl font-bold text-white mb-4">$149.99</span> 
+                                <button class="w-full py-3 rounded-md buy-button" data-lang-key="buy-button"> 
+                                    КУПИТЬ 
+                                </button> 
+                            </div> 
+                        </div> 
+                    </div> 
+                </div> 
+            </section> 
+        </div> 
 
-    <main class="flex-grow">
-        <!-- Секция магазина аккаунтов (изначально видна) -->
-        <div id="accounts-store" class="page-content">
-            <!-- Секция-герой для аккаунтов -->
-            <section class="relative w-full h-screen flex items-center justify-center text-center overflow-hidden hero-bg-accounts">
-                <div class="absolute inset-0 bg-black opacity-60"></div>
-                <div class="relative z-10 px-4 max-w-4xl mx-auto">
-                    <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold uppercase tracking-wider text-white text-shadow">
-                        <span id="hero-title-accounts-part1" class="text-cyan-400" data-lang-key="hero-title-accounts-part1">ПОЛУЧИТЕ</span> <span id="hero-title-accounts-part2" data-lang-key="hero-title-accounts-part2">СВОЙ АККАУНТ</span>
-                    </h1>
-                    <p id="hero-subtitle-accounts" class="text-lg sm:text-xl md:text-2xl font-medium uppercase mt-4 mb-8 text-gray-300" data-lang-key="hero-subtitle-accounts">
-                        КОЛЛЕКЦИЯ РЕДКИХ И ЭКСКЛЮЗИВНЫХ АККАУНТОВ
-                    </p>
-                    <a href="#accounts" id="hero-button-accounts" class="px-8 py-4 bg-cyan-400 text-black font-semibold rounded-full shadow-lg hover:bg-cyan-500 transition-colors duration-300" data-lang-key="hero-button-accounts">
-                        ПОСМОТРЕТЬ КОЛЛЕКЦИЮ
-                    </a>
-                </div>
-            </section>
+        <!-- Секция магазина UC (изначально скрыта) --> 
+        <div id="uc-store" class="page-content hidden"> 
+            <!-- Секция-герой для UC --> 
+            <section class="relative w-full h-screen flex items-center justify-center text-center overflow-hidden hero-bg-uc"> 
+                <div class="absolute inset-0 bg-black opacity-60"></div> 
+                <div class="relative z-10 px-4 max-w-4xl mx-auto"> 
+                    <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold uppercase tracking-wider text-white text-shadow"> 
+                        <span id="hero-title-uc-part1" class="text-pink-500" data-lang-key="hero-title-uc-part1">NEW ERA</span> <span id="hero-title-uc-part2" data-lang-key="hero-title-uc-part2">X</span> 
+                    </h1> 
+                    <p id="hero-subtitle-uc" class="text-lg sm:text-xl md:text-2xl font-medium uppercase mt-4 mb-8 text-gray-300" data-lang-key="hero-subtitle-uc"> 
+                        UC — БЫСТРО И ЧЕСТНО 
+                    </p> 
+                    <a href="#uc" id="hero-button-uc" class="px-8 py-4 bg-pink-500 text-black font-semibold rounded-full shadow-lg hover:bg-pink-600 transition-colors duration-300" data-lang-key="hero-button-uc"> 
+                        ПОСМОТРЕТЬ ПАКЕТЫ 
+                    </a> 
+                </div> 
+            </section> 
 
-            <!-- Сетка аккаунтов -->
-            <section id="accounts" class="py-16 md:py-24 px-4 bg-gray-950">
-                <div class="container mx-auto">
-                    <h2 id="accounts-section-title" class="text-4xl font-bold uppercase text-center mb-12 text-white" data-lang-key="accounts-section-title">НАША КОЛЛЕКЦИЯ</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div class="product-card rounded-xl p-6 text-center">
-                            <div class="flex flex-col items-center">
-                                <img src="https://im.ge/i/FhFq1P" alt="Скин Cyber-Maiden" class="w-full h-auto rounded-lg mb-4">
-                                <h3 class="text-2xl font-bold uppercase text-cyan-400 mb-2" data-lang-key="product-title-1">АККАУНТ С CYBER-MAIDEN</h3>
-                                <p class="text-xl font-medium text-gray-300 mb-4" data-lang-key="product-desc-1">Редкий аккаунт</p>
-                                <span class="text-2xl font-bold text-white mb-4">$29.99</span>
-                                <button class="w-full py-3 rounded-md buy-button" data-lang-key="buy-button">
-                                    КУПИТЬ
-                                </button>
-                            </div>
-                        </div>
-                        <div class="product-card rounded-xl p-6 text-center">
-                            <div class="flex flex-col items-center">
-                                <img src="https://placehold.co/600x400/333/00ffff?text=АККАУНТ" alt="Аккаунт 'Night Hunter'" class="w-full h-auto rounded-lg mb-4">
-                                <h3 class="text-2xl font-bold uppercase text-cyan-400 mb-2" data-lang-key="product-title-2">АККАУНТ NIGHT HUNTER</h3>
-                                <p class="text-xl font-medium text-gray-300 mb-4" data-lang-key="product-desc-2">Элитный аккаунт</p>
-                                <span class="text-2xl font-bold text-white mb-4">$49.99</span>
-                                <button class="w-full py-3 rounded-md buy-button" data-lang-key="buy-button">
-                                    КУПИТЬ
-                                </button>
-                            </div>
-                        </div>
-                        <div class="product-card rounded-xl p-6 text-center">
-                            <div class="flex flex-col items-center">
-                                <img src="https://placehold.co/600x400/333/00ffff?text=АККАУНТ" alt="Аккаунт 'Crimson Dragon'" class="w-full h-auto rounded-lg mb-4">
-                                <h3 class="text-2xl font-bold uppercase text-cyan-400 mb-2" data-lang-key="product-title-3">АККАУНТ С CRIMSON DRAGON</h3>
-                                <p class="text-xl font-medium text-gray-300 mb-4" data-lang-key="product-desc-3">Легендарный аккаунт</p>
-                                <span class="text-2xl font-bold text-white mb-4">$99.99</span>
-                                <button class="w-full py-3 rounded-md buy-button" data-lang-key="buy-button">
-                                    КУПИТЬ
-                                </button>
-                            </div>
-                        </div>
-                        <div class="product-card rounded-xl p-6 text-center">
-                            <div class="flex flex-col items-center">
-                                <img src="https://placehold.co/600x400/333/00ffff?text=АККАУНТ" alt="Аккаунт 'Ghost Trooper'" class="w-full h-auto rounded-lg mb-4">
-                                <h3 class="text-2xl font-bold uppercase text-cyan-400 mb-2" data-lang-key="product-title-4">АККАУНТ GHOST TROOPER</h3>
-                                <p class="text-xl font-medium text-gray-300 mb-4" data-lang-key="product-desc-4">Мифический аккаунт</p>
-                                <span class="text-2xl font-bold text-white mb-4">$149.99</span>
-                                <button class="w-full py-3 rounded-md buy-button" data-lang-key="buy-button">
-                                    КУПИТЬ
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
+            <!-- Сетка UC --> 
+            <section id="uc" class="py-16 md:py-24 px-4 bg-gray-950"> 
+                <div class="container mx-auto"> 
+                    <h2 id="uc-section-title" class="text-4xl font-bold uppercase text-center mb-12 text-white" data-lang-key="uc-section-title">ПАКЕТЫ UC</h2> 
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-8"> 
+                        <!-- Динамическое создание карточек UC --> 
+                    </div> 
+                </div> 
+            </section> 
+        </div> 
 
-        <!-- Секция магазина UC (изначально скрыта) -->
-        <div id="uc-store" class="page-content hidden">
-            <!-- Секция-герой для UC -->
-            <section class="relative w-full h-screen flex items-center justify-center text-center overflow-hidden hero-bg-uc">
-                <div class="absolute inset-0 bg-black opacity-60"></div>
-                <div class="relative z-10 px-4 max-w-4xl mx-auto">
-                    <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold uppercase tracking-wider text-white text-shadow">
-                        <span id="hero-title-uc-part1" class="text-pink-500" data-lang-key="hero-title-uc-part1">NEW ERA</span> <span id="hero-title-uc-part2" data-lang-key="hero-title-uc-part2">X</span>
-                    </h1>
-                    <p id="hero-subtitle-uc" class="text-lg sm:text-xl md:text-2xl font-medium uppercase mt-4 mb-8 text-gray-300" data-lang-key="hero-subtitle-uc">
-                        UC — БЫСТРО И ЧЕСТНО
-                    </p>
-                    <a href="#uc" id="hero-button-uc" class="px-8 py-4 bg-pink-500 text-black font-semibold rounded-full shadow-lg hover:bg-pink-600 transition-colors duration-300" data-lang-key="hero-button-uc">
-                        ПОСМОТРЕТЬ ПАКЕТЫ
-                    </a>
-                </div>
-            </section>
+        <!-- Секция "О нас" --> 
+        <section id="about" class="py-16 md:py-24 px-4 bg-gray-900"> 
+            <div class="container mx-auto"> 
+                <div class="flex flex-col md:flex-row items-center justify-between"> 
+                    <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0"> 
+                        <h2 id="about-title" class="text-3xl md:text-4xl font-bold uppercase mb-4 text-white" data-lang-key="about-title">О НАС</h2> 
+                        <p id="about-text" class="text-gray-400 leading-relaxed font-light" data-lang-key="about-text"> 
+                            Мы предлагаем быстрый и безопасный способ покупки. Мы стремимся обеспечить лучшие цены и безупречный сервис, чтобы вы могли наслаждаться игрой без каких-либо перебоев. Наша цель - сделать доступ к предметам простым и удобным для каждого. 
+                        </p> 
+                    </div> 
+                    <div class="md:w-1/2"> 
+                        <img src="https://placehold.co/600x400/333/00ffff?text=TACTICAL+ADVANTAGE" alt="О нас" class="w-full h-auto rounded-xl shadow-lg border-2 border-cyan-400"> 
+                    </div> 
+                </div> 
+            </div> 
+        </section> 
 
-            <!-- Сетка UC -->
-            <section id="uc" class="py-16 md:py-24 px-4 bg-gray-950">
-                <div class="container mx-auto">
-                    <h2 id="uc-section-title" class="text-4xl font-bold uppercase text-center mb-12 text-white" data-lang-key="uc-section-title">ПАКЕТЫ UC</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-8">
-                        <!-- Динамическое создание карточек UC -->
-                    </div>
-                </div>
-            </section>
-        </div>
+        <!-- Секция "Контакты" --> 
+        <section id="contact" class="py-16 md:py-24 px-4 bg-gray-950"> 
+            <div class="container mx-auto text-center"> 
+                <h2 id="contact-title" class="text-3xl md:text-4xl font-bold uppercase mb-4 text-white" data-lang-key="contact-title">СВЯЖИТЕСЬ С НАМИ</h2> 
+                <p id="contact-text" class="text-gray-400 mb-8 font-light" data-lang-key="contact-text"> 
+                    У вас есть вопросы? Не стесняйтесь обращаться. 
+                </p> 
+                <div class="flex flex-col items-center justify-center space-y-4"> 
+                    <a href="mailto:zakaryanmaik44@gmail.com" class="text-cyan-400 text-lg hover:underline transition-colors uppercase"> 
+                        zakaryanmaik44@gmail.com 
+                    </a> 
+                </div> 
+            </div> 
+        </section> 
 
-        <!-- Секция "О нас" -->
-        <section id="about" class="py-16 md:py-24 px-4 bg-gray-900">
-            <div class="container mx-auto">
-                <div class="flex flex-col md:flex-row items-center justify-between">
-                    <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0">
-                        <h2 id="about-title" class="text-3xl md:text-4xl font-bold uppercase mb-4 text-white" data-lang-key="about-title">О НАС</h2>
-                        <p id="about-text" class="text-gray-400 leading-relaxed font-light" data-lang-key="about-text">
-                            Мы предлагаем быстрый и безопасный способ покупки. Мы стремимся обеспечить лучшие цены и безупречный сервис, чтобы вы могли наслаждаться игрой без каких-либо перебоев. Наша цель - сделать доступ к предметам простым и удобным для каждого.
-                        </p>
-                    </div>
-                    <div class="md:w-1/2">
-                        <img src="https://placehold.co/600x400/333/00ffff?text=TACTICAL+ADVANTAGE" alt="О нас" class="w-full h-auto rounded-xl shadow-lg border-2 border-cyan-400">
-                    </div>
-                </div>
-            </div>
-        </section>
+    </main> 
 
-        <!-- Секция "Контакты" -->
-        <section id="contact" class="py-16 md:py-24 px-4 bg-gray-950">
-            <div class="container mx-auto text-center">
-                <h2 id="contact-title" class="text-3xl md:text-4xl font-bold uppercase mb-4 text-white" data-lang-key="contact-title">СВЯЖИТЕСЬ С НАМИ</h2>
-                <p id="contact-text" class="text-gray-400 mb-8 font-light" data-lang-key="contact-text">
-                    У вас есть вопросы? Не стесняйтесь обращаться.
-                </p>
-                <div class="flex flex-col items-center justify-center space-y-4">
-                    <a href="mailto:zakaryanmaik44gmail.com" class="text-cyan-400 text-lg hover:underline transition-colors uppercase">
-                        zakaryanmaik44gmail.com
-                    </a>
-                    <a href="#" class="text-cyan-400 text-lg hover:underline transition-colors uppercase">
-                        091152197
-                    </a>
-                </div>
-            </div>
-        </section>
+    <!-- Footer Section --> 
+    <footer class="w-full bg-black/80 backdrop-blur-sm py-8 px-4 mt-auto"> 
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left"> 
+            <div class="mb-4 md:mb-0"> 
+                <p id="footer-text" class="text-gray-400 text-sm font-light" data-lang-key="footer-text">&copy; 2024 PUBG Shop. Все права защищены.</p> 
+            </div> 
+            <div class="flex space-x-6 text-sm font-light uppercase"> 
+                <a href="#about" class="text-gray-400 hover:text-cyan-400 transition-colors" data-lang-key="nav-about">О нас</a> 
+                <a href="#contact" class="text-gray-400 hover:text-cyan-400 transition-colors" data-lang-key="nav-contact">Контакты</a> 
+                <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors" data-lang-key="terms">Условия обслуживания</a> 
+            </div> 
+        </div> 
+    </footer> 
+     
+    <script> 
+        // Получаем ссылки на все необходимые элементы 
+        const menuBtn = document.getElementById('menu-btn'); 
+        const mobileMenu = document.getElementById('mobile-menu'); 
+        const accountsStore = document.getElementById('accounts-store'); 
+        const ucStore = document.getElementById('uc-store'); 
+        const switchPageBtn = document.getElementById('switch-page-btn'); 
+        const switchPageBtnMobile = document.getElementById('switch-page-btn-mobile'); 
+        const shopName = document.getElementById('shop-name'); 
+        const shopTitle = document.getElementById('shop-title'); 
+        const langButton = document.getElementById('lang-button'); 
+        const langButtonMobile = document.getElementById('lang-button-mobile'); 
+        const ucGrid = document.querySelector('#uc .grid'); 
+        const contactModal = document.getElementById('contact-modal'); 
+        const closeModalBtn = document.getElementById('close-modal-btn'); 
+        const buyButtons = document.querySelectorAll('.buy-button'); 
 
-    </main>
+        // Данные для UC пакетов, включая цены 
+        const ucPacks = [ 
+            { amount: 30, price: 0.99 }, 
+            { amount: 60, price: 1.99 }, 
+            { amount: 100, price: 2.99 }, 
+            { amount: 200, price: 5.00 }, 
+            { amount: 500, price: 10.00 }, 
+            { amount: 1000, price: 20.00 }, 
+            { amount: 2000, price: 35.00 }, 
+            { amount: 5000, price: 75.00 }, 
+            { amount: 10000, price: 140.00 }, 
+            { amount: 50000, price: 600.00 }, 
+            { amount: 100000, price: 1100.00 } 
+        ]; 
 
-    <!-- Footer Section -->
-    <footer class="w-full bg-black/80 backdrop-blur-sm py-8 px-4 mt-auto">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-            <div class="mb-4 md:mb-0">
-                <p id="footer-text" class="text-gray-400 text-sm font-light" data-lang-key="footer-text">&copy; 2024 PUBG Shop. Все права защищены.</p>
-            </div>
-            <div class="flex space-x-6 text-sm font-light uppercase">
-                <a href="#about" class="text-gray-400 hover:text-cyan-400 transition-colors" data-lang-key="nav-about">О нас</a>
-                <a href="#contact" class="text-gray-400 hover:text-cyan-400 transition-colors" data-lang-key="nav-contact">Контакты</a>
-                <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors" data-lang-key="terms">Условия обслуживания</a>
-            </div>
-        </div>
-    </footer>
-    
-    <script>
-        // Получаем ссылки на все необходимые элементы
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const accountsStore = document.getElementById('accounts-store');
-        const ucStore = document.getElementById('uc-store');
-        const switchPageBtn = document.getElementById('switch-page-btn');
-        const switchPageBtnMobile = document.getElementById('switch-page-btn-mobile');
-        const shopName = document.getElementById('shop-name');
-        const shopTitle = document.getElementById('shop-title');
-        const langButton = document.getElementById('lang-button');
-        const langButtonMobile = document.getElementById('lang-button-mobile');
-        const ucGrid = document.querySelector('#uc .grid');
-        const contactModal = document.getElementById('contact-modal');
-        const closeModalBtn = document.getElementById('close-modal-btn');
-        const buyButtons = document.querySelectorAll('.buy-button');
-
-
-        // Данные для UC пакетов, включая цены
-        const ucPacks = [
-            { amount: 30, price: 0.99 },
-            { amount: 60, price: 1.99 },
-            { amount: 100, price: 2.99 },
-            { amount: 200, price: 5.00 },
-            { amount: 500, price: 10.00 },
-            { amount: 1000, price: 20.00 },
-            { amount: 2000, price: 35.00 },
-            { amount: 5000, price: 75.00 },
-            { amount: 10000, price: 140.00 },
-            { amount: 50000, price: 600.00 },
-            { amount: 100000, price: 1100.00 }
-        ];
-
-        // Объект с переводами всех текстовых элементов
-        const translations = {
-            'ru': {
-                'lang-button': 'ՀԱՅԵՐԵՆ',
-                'nav-accounts': 'Аки',
-                'nav-about': 'О нас',
-                'nav-contact': 'Контакты',
-                'terms': 'Условия обслуживания',
-                'shop-title-accounts': 'АККАУНТЫ',
-                'hero-title-accounts-part1': 'ПОЛУЧИТЕ',
-                'hero-title-accounts-part2': 'СВОЙ АККАУНТ',
-                'hero-subtitle-accounts': 'КОЛЛЕКЦИЯ РЕДКИХ И ЭКСКЛЮЗИВНЫХ АККАУНТОВ',
-                'hero-button-accounts': 'ПОСМОТРЕТЬ КОЛЛЕКЦИЮ',
-                'accounts-section-title': 'НАША КОЛЛЕКЦИЯ',
-                'product-title-1': 'АККАУНТ С CYBER-MAIDEN',
-                'product-desc-1': 'Редкий аккаунт',
-                'product-title-2': 'АККАУНТ NIGHT HUNTER',
-                'product-desc-2': 'Элитный аккаунт',
-                'product-title-3': 'АККАУНТ С CRIMSON DRAGON',
-                'product-desc-3': 'Легендарный аккаунт',
-                'product-title-4': 'АККАУНТ GHOST TROOPER',
-                'product-desc-4': 'Мифический аккаунт',
-                'buy-button': 'КУПИТЬ',
-                'hero-title-uc-part1': 'NEW ERA',
-                'hero-title-uc-part2': 'X',
-                'hero-subtitle-uc': 'UC — БЫСТРО И ЧЕСТНО',
-                'hero-button-uc': 'ПОСМОТРЕТЬ ПАКЕТЫ',
-                'uc-section-title': 'ПАКЕТЫ UC',
-                'uc-desc': 'Быстро и Честно', // Общий текст для описания UC
-                'about-title': 'О НАС',
-                'about-text': 'Мы предлагаем быстрый и безопасный способ покупки. Мы стремимся обеспечить лучшие цены и безупречный сервис, чтобы вы могли наслаждаться игрой без каких-либо перебоев. Наша цель - сделать доступ к предметам простым и удобным для каждого.',
-                'contact-title': 'СВЯЖИТЕСЬ С НАМИ',
-                'contact-text': 'У вас есть вопросы? Не стесняйтесь обращаться.',
-                'footer-text': '&copy; 2024 PUBG Shop. Все права защищены.',
-                'switch-to-uc': 'NEW ERA X UC',
-                'switch-to-accounts': 'NEW ERA X AK',
-                'modal-title': 'Свяжитесь с нами',
-                'modal-subtitle': 'Выберите удобный способ связи'
+        // Объект с переводами всех текстовых элементов 
+        const translations = { 
+            'ru': { 
+                'lang-button': '<span class="flag-icon flag-icon-ru"></span><span>РУС</span>', 
+                'nav-chat': 'TG SHOP CHAT', 
+                'nav-accounts': 'Аки', 
+                'nav-about': 'О нас', 
+                'nav-contact': 'Контакты', 
+                'terms': 'Условия обслуживания', 
+                'shop-title-accounts': 'АККАУНТЫ', 
+                'hero-title-accounts-part1': 'ПОЛУЧИТЕ', 
+                'hero-title-accounts-part2': 'СВОЙ АККАУНТ', 
+                'hero-subtitle-accounts': 'КОЛЛЕКЦИЯ РЕДКИХ И ЭКСКЛЮЗИВНЫХ АККАУНТОВ', 
+                'hero-button-accounts': 'ПОСМОТРЕТЬ КОЛЛЕКЦИЮ', 
+                'accounts-section-title': 'НАША КОЛЛЕКЦИЯ', 
+                'product-title-1': 'АККАУНТ С CYBER-MAIDEN', 
+                'product-desc-1': 'Редкий аккаунт', 
+                'product-title-2': 'АККАУНТ NIGHT HUNTER', 
+                'product-desc-2': 'Элитный аккаунт', 
+                'product-title-3': 'АККАУНТ С CRIMSON DRAGON', 
+                'product-desc-3': 'Легендарный аккаунт', 
+                'product-title-4': 'АККАУНТ GHOST TROOPER', 
+                'product-desc-4': 'Мифический аккаунт', 
+                'buy-button': 'КУПИТЬ', 
+                'hero-title-uc-part1': 'NEW ERA', 
+                'hero-title-uc-part2': 'X', 
+                'hero-subtitle-uc': 'UC — БЫСТРО И ЧЕСТНО', 
+                'hero-button-uc': 'ПОСМОТРЕТЬ ПАКЕТЫ', 
+                'uc-section-title': 'ПАКЕТЫ UC', 
+                'uc-desc': 'Быстро и Честно', // Общий текст для описания UC 
+                'about-title': 'О НАС', 
+                'about-text': 'Мы предлагаем быстрый и безопасный способ покупки. Мы стремимся обеспечить лучшие цены и безупречный сервис, чтобы вы могли наслаждаться игрой без каких-либо перебоев. Наша цель - сделать доступ к предметам простым и удобным для каждого.', 
+                'contact-title': 'СВЯЖИТЕСЬ С НАМИ', 
+                'contact-text': 'У вас есть вопросы? Не стесняйтесь обращаться.', 
+                'footer-text': '&copy; 2024 PUBG Shop. Все права защищены.', 
+                'switch-to-uc': 'NEW ERA X UC', 
+                'switch-to-accounts': 'NEW ERA X AK', 
+                'modal-title': 'Свяжитесь с нами', 
+                'modal-subtitle': 'Выберите удобный способ связи' 
+            }, 
+            'am': { 
+                'lang-button': '<span class="flag-icon flag-icon-am"></span><span>ՀԱՅ</span>', 
+                'nav-chat': 'TG SHOP CHAT', 
+                'nav-accounts': 'Հաշիվներ', 
+                'nav-about': 'Մեր մասին', 
+                'nav-contact': 'Կոնտակտներ', 
+                'terms': 'Ծառայության պայմաններ', 
+                'shop-title-accounts': 'ՀԱՇԻՎՆԵՐ', 
+                'hero-title-accounts-part1': 'ՍՏԱՑԵՔ', 
+                'hero-title-accounts-part2': 'ՁԵՐ ՀԱՇԻՎԸ', 
+                'hero-subtitle-accounts': 'ՀԱԶՎԱԳՅՈՒՏ ԵՎ ԲԱՑԱՌԻԿ ՀԱՇԻՎՆԵՐԻ ՀԱՎԱՔԱԾՈՒ', 
+                'hero-button-accounts': 'ԴԻՏԵԼ ՀԱՎԱՔԱԾՈՒՆ', 
+                'accounts-section-title': 'ՄԵՐ ՀԱՎԱՔԱԾՈՒՆ', 
+                'product-title-1': 'ՀԱՇԻՎ CYBER-MAIDEN-ՈՎ', 
+                'product-desc-1': 'Հազվագյուտ հաշիվ', 
+                'product-title-2': 'NIGHT HUNTER ՀԱՇԻՎ', 
+                'product-desc-2': 'Էլիտար հաշիվ', 
+                'product-title-3': 'ՀԱՇԻՎ CRIMSON DRAGON-ՈՎ', 
+                'product-desc-3': 'Լեգենդար հաշիվ', 
+                'product-title-4': 'GHOST TROOPER ՀԱՇԻՎ', 
+                'product-desc-4': 'Միֆական հաշիվ', 
+                'buy-button': 'ԳՆԵԼ', 
+                'hero-title-uc-part1': 'NEW ERA', 
+                'hero-title-uc-part2': 'X', 
+                'hero-subtitle-uc': 'UC — ԱՐԱԳ ԵՎ ԱՆԿԵՂԾ', 
+                'hero-button-uc': 'ԴԻՏԵԼ ՓԱԹԵԹՆԵՐԸ', 
+                'uc-section-title': 'UC ՓԱԹԵԹՆԵՐ', 
+                'uc-desc': 'Արագ և Անկեղծ', // Общий текст для описания UC 
+                'about-title': 'ՄԵՐ ՄԱՍԻՆ', 
+                'about-text': 'Մենք առաջարկում ենք գնումների արագ և անվտանգ եղանակ։ Մենք ձգտում ենք ապահովել լավագույն գները և անթերի սպասարկում, որպեսզի դուք կարողանաք վայելել խաղը առանց որևէ խափանման։ Մեր նպատակն է յուրաքանչյուրի համար հեշտ և հարմարավետ դարձնել իրերի հասանելիությունը։', 
+                'contact-title': 'ԿԱՊ ՄԵԶ ՀԵՏ', 
+                'contact-text': 'Հարցեր ունե՞ք։ Մի հապաղեք կապվել։', 
+                'footer-text': '&copy; 2024 PUBG Shop. Բոլոր իրավունքները պաշտպանված են։', 
+                'switch-to-uc': 'NEW ERA X UC', 
+                'switch-to-accounts': 'NEW ERA X AK', 
+                'modal-title': 'Կապվեք մեզ հետ', 
+                'modal-subtitle': 'Ընտրեք կապի հարմար եղանակ' 
             },
-            'am': {
-                'lang-button': 'ՌՈՒՍԵՐԵՆ',
-                'nav-accounts': 'Հաշիվներ',
-                'nav-about': 'Մեր մասին',
-                'nav-contact': 'Կոնտակտներ',
-                'terms': 'Ծառայության պայմաններ',
-                'shop-title-accounts': 'ՀԱՇԻՎՆԵՐ',
-                'hero-title-accounts-part1': 'ՍՏԱՑԵՔ',
-                'hero-title-accounts-part2': 'ՁԵՐ ՀԱՇԻՎԸ',
-                'hero-subtitle-accounts': 'ՀԱԶՎԱԳՅՈՒՏ ԵՎ ԲԱՑԱՌԻԿ ՀԱՇԻՎՆԵՐԻ ՀԱՎԱՔԱԾՈՒ',
-                'hero-button-accounts': 'ԴԻՏԵԼ ՀԱՎԱՔԱԾՈՒՆ',
-                'accounts-section-title': 'ՄԵՐ ՀԱՎԱՔԱԾՈՒՆ',
-                'product-title-1': 'ՀԱՇԻՎ CYBER-MAIDEN-ՈՎ',
-                'product-desc-1': 'Հազվագյուտ հաշիվ',
-                'product-title-2': 'NIGHT HUNTER ՀԱՇԻՎ',
-                'product-desc-2': 'Էլիտար հաշիվ',
-                'product-title-3': 'ՀԱՇԻՎ CRIMSON DRAGON-ՈՎ',
-                'product-desc-3': 'Լեգենդար հաշիվ',
-                'product-title-4': 'GHOST TROOPER ՀԱՇԻՎ',
-                'product-desc-4': 'Միֆական հաշիվ',
-                'buy-button': 'ԳՆԵԼ',
+            'en': {
+                'lang-button': '<span class="flag-icon flag-icon-gb"></span><span>ENG</span>',
+                'nav-chat': 'TG SHOP CHAT',
+                'nav-accounts': 'Accounts',
+                'nav-about': 'About Us',
+                'nav-contact': 'Contacts',
+                'terms': 'Terms of Service',
+                'shop-title-accounts': 'ACCOUNTS',
+                'hero-title-accounts-part1': 'GET YOUR',
+                'hero-title-accounts-part2': 'DREAM ACCOUNT',
+                'hero-subtitle-accounts': 'COLLECTION OF RARE AND EXCLUSIVE ACCOUNTS',
+                'hero-button-accounts': 'VIEW COLLECTION',
+                'accounts-section-title': 'OUR COLLECTION',
+                'product-title-1': 'ACCOUNT WITH CYBER-MAIDEN',
+                'product-desc-1': 'Rare account',
+                'product-title-2': 'NIGHT HUNTER ACCOUNT',
+                'product-desc-2': 'Elite account',
+                'product-title-3': 'ACCOUNT WITH CRIMSON DRAGON',
+                'product-desc-3': 'Legendary account',
+                'product-title-4': 'GHOST TROOPER ACCOUNT',
+                'product-desc-4': 'Mythical account',
+                'buy-button': 'BUY NOW',
                 'hero-title-uc-part1': 'NEW ERA',
                 'hero-title-uc-part2': 'X',
-                'hero-subtitle-uc': 'UC — ԱՐԱԳ ԵՎ ԱՆԿԵՂԾ',
-                'hero-button-uc': 'ԴԻՏԵԼ ՓԱԹԵԹՆԵՐԸ',
-                'uc-section-title': 'UC ՓԱԹԵԹՆԵՐ',
-                'uc-desc': 'Արագ և Անկեղծ', // Общий текст для описания UC
-                'about-title': 'ՄԵՐ ՄԱՍԻՆ',
-                'about-text': 'Մենք առաջարկում ենք գնումների արագ և անվտանգ եղանակ։ Մենք ձգտում ենք ապահովել լավագույն գները և անթերի սպասարկում, որպեսզի դուք կարողանաք վայելել խաղը առանց որևէ խափանման։ Մեր նպատակն է յուրաքանչյուրի համար հեշտ և հարմարավետ դարձնել իրերի հասանելիությունը։',
-                'contact-title': 'ԿԱՊ ՄԵԶ ՀԵՏ',
-                'contact-text': 'Հարցեր ունե՞ք։ Մի հապաղեք կապվել։',
-                'footer-text': '&copy; 2024 PUBG Shop. Բոլոր իրավունքները պաշտպանված են։',
-                'switch-to-uc': 'NEW ERA X UC',
-                'switch-to-accounts': 'NEW ERA X AK',
-                'modal-title': 'Կապվեք մեզ հետ',
-                'modal-subtitle': 'Ընտրեք կապի հարմար եղանակ'
-            }
-        };
-
-        let currentLang = 'ru';
-        let isUcPage = false;
-
-        // Функция для динамического создания карточек UC
-        function createUcCards() {
-            ucGrid.innerHTML = ''; // Очищаем контейнер перед добавлением новых карточек
-            const currentTranslations = translations[currentLang];
-            ucPacks.forEach(pack => {
-                const card = document.createElement('div');
-                card.className = 'product-card product-card-uc rounded-xl p-6 text-center';
-                card.innerHTML = `
-                    <div class="flex flex-col items-center">
-                        <img src="https://placehold.co/600x400/333/ff00ff?text=${pack.amount}+UC" alt="${pack.amount} UC" class="w-full h-auto rounded-lg mb-4">
-                        <h3 class="text-2xl font-bold uppercase text-pink-500 mb-2">${pack.amount} UC</h3>
-                        <p class="text-xl font-medium text-gray-300 mb-4">${currentTranslations['uc-desc']}</p>
-                        <span class="text-2xl font-bold text-white mb-4">$${pack.price.toFixed(2)}</span>
-                        <button class="w-full py-3 rounded-md buy-button buy-button-uc" data-lang-key="buy-button">
-                            ${currentTranslations['buy-button']}
-                        </button>
-                    </div>
-                `;
-                ucGrid.appendChild(card);
-            });
-        }
-
-        // Функция для обновления всего текста на сайте
-        function updateLanguage() {
-            const currentTranslations = translations[currentLang];
-            
-            // Обновляем текст кнопки переключения страниц
-            const switchButtonText = isUcPage ? currentTranslations['switch-to-accounts'] : currentTranslations['switch-to-uc'];
-            switchPageBtn.textContent = switchButtonText;
-            switchPageBtnMobile.textContent = switchButtonText;
-
-            // Обновляем текст заголовка
-            if (isUcPage) {
-                shopName.textContent = 'NEW ERA';
-                shopName.classList.remove('text-cyan-400');
-                shopName.classList.add('text-pink-500');
-                shopTitle.textContent = 'X';
-            } else {
-                shopName.textContent = 'PUBG';
-                shopName.classList.remove('text-pink-500');
-                shopName.classList.add('text-cyan-400');
-                shopTitle.textContent = currentTranslations['shop-title-accounts'];
-            }
-
-            // Обновляем все остальные элементы с атрибутом data-lang-key
-            document.querySelectorAll('[data-lang-key]').forEach(element => {
-                const key = element.getAttribute('data-lang-key');
-                if (currentTranslations[key]) {
-                    element.textContent = currentTranslations[key];
-                }
-            });
-            
-            // Отдельно обновляем составные заголовки
-            document.getElementById('hero-title-accounts-part1').textContent = currentTranslations['hero-title-accounts-part1'];
-            document.getElementById('hero-title-accounts-part2').textContent = currentTranslations['hero-title-accounts-part2'];
-            document.getElementById('hero-title-uc-part1').textContent = currentTranslations['hero-title-uc-part1'];
-            document.getElementById('hero-title-uc-part2').textContent = currentTranslations['hero-title-uc-part2'];
-
-            // Обновляем текст на динамически созданных карточках UC
-            createUcCards();
-        }
-
-        // Функция для переключения между страницами
-        function switchPage() {
-            isUcPage = !isUcPage;
-            if (isUcPage) {
-                accountsStore.classList.add('hidden');
-                ucStore.classList.remove('hidden');
-            } else {
-                accountsStore.classList.remove('hidden');
-                ucStore.classList.add('hidden');
-            }
-            // Теперь, когда страница переключена, обновляем все тексты
-            updateLanguage(); 
-        }
-
-        // Обновляем текст при загрузке страницы, чтобы он соответствовал начальному языку
-        document.addEventListener('DOMContentLoaded', updateLanguage);
-
-        // Добавляем обработчики событий для кнопок переключения страниц
-        switchPageBtn.addEventListener('click', switchPage);
-        switchPageBtnMobile.addEventListener('click', switchPage);
-        
-        // Добавляем обработчики событий для кнопок переключения языка
-        langButton.addEventListener('click', () => {
-            currentLang = currentLang === 'ru' ? 'am' : 'ru';
-            updateLanguage();
-        });
-        
-        langButtonMobile.addEventListener('click', () => {
-            currentLang = currentLang === 'ru' ? 'am' : 'ru';
-            updateLanguage();
-        });
-
-        // Переключение мобильного меню
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Плавная прокрутка для якорных ссылок
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Обработчики для модального окна
-        // Показываем модальное окно при нажатии на любую кнопку "Купить"
-        document.body.addEventListener('click', (e) => {
-            if (e.target.classList.contains('buy-button')) {
-                contactModal.classList.remove('hidden');
-            }
-        });
-        
-        // Скрываем модальное окно при нажатии на кнопку закрытия
-        closeModalBtn.addEventListener('click', () => {
-            contactModal.classList.add('hidden');
-        });
-        
-        // Скрываем модальное окно при клике вне его области
-        contactModal.addEventListener('click', (e) => {
-            if (e.target === contactModal) {
-                contactModal.classList.add('hidden');
-            }
-        });
-    </script>
-</body>
-</html> покажи мне этот сайт открой 
+                'hero-subtitle-uc': 'UC — FAST AND RELIABLE',
+                'hero-button-uc': 'VIEW PACKAGES',
+                'uc-section-title': 'UC PACKAGES',
+                'uc-desc': 'Fast and Reliable',
+                'about-title': 'ABOUT US',
+                'about-text': 'We offer a fast and secure way to purchase in-game items. We strive to provide the best prices and impeccable service so you can enjoy the game without any interruptions. Our goal is to make access to items simple and convenient for everyone.',
+                'contact-title': 'CONTACT US',
+                'contact-text': 'Have questions? Feel free to contact us.',
+                'footer
