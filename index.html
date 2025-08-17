@@ -710,30 +710,7 @@
         });
 
         // Обработчик формы отзывов
-     <script>const chatContainer=document.getElementById('chatContainer');
-const robotIcon=document.getElementById('robotIcon');
-const chatMessages=document.getElementById('chatMessages');
-const userInput=document.getElementById('userInput');
-const sendButton=document.getElementById('sendButton');
-
-function appendMessage(text,sender){
-    const bubble=document.createElement('div');
-    bubble.classList.add('message-bubble',sender==='user'?'user-message':'ai-message');
-    const span=document.createElement('span'); span.textContent=text; bubble.appendChild(span);
-    chatMessages.appendChild(bubble);
-    chatMessages.scrollTop=chatMessages.scrollHeight;
-}
-
-function sendMessage(prompt){
-    appendMessage(prompt,'user');
-    setTimeout(()=>{const reply="Привет! Я - NEW ERA X ASSISTANT. Чем могу помочь? 🚀"; appendMessage(reply,'ai');},500);
-    userInput.value='';
-}
-
-sendButton.addEventListener('click',()=>{const prompt=userInput.value.trim(); if(prompt) sendMessage(prompt);});
-userInput.addEventListener('keypress',(e)=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendButton.click();}});
-robotIcon.addEventListener('click',()=>{chatContainer.classList.toggle('open'); if(chatMessages.children.length===0){appendMessage("Привет! Я - NEW ERA X ASSISTANT. Готов помочь! 🚀",'ai'); userInput.focus();}});
-userInput.addEventListener('input',()=>{userInput.style.height='auto'; userInput.style.height=userInput.scrollHeight+'px';});   reviewForm.addEventListener('submit', (e) => {
+        reviewForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const reviewTextarea = document.getElementById('review-text');
             if (reviewTextarea.value.trim() !== '') {
@@ -749,13 +726,3 @@ userInput.addEventListener('input',()=>{userInput.style.height='auto'; userInput
     </script>
 </body>
 </html>
-</body><!-- NEW ERA X ASSISTANT -->
-<div id="chatContainer" class="chat-container">
-    <div class="chat-header">NEW ERA X ASSISTANT</div>
-    <div id="chatMessages" class="chat-messages"></div>
-    <div class="chat-input">
-        <textarea id="userInput" placeholder="Напишите сообщение..." rows="1"></textarea>
-        <button id="sendButton"><i class="fa-solid fa-paper-plane"></i></button>
-    </div>
-</div>
-<i id="robotIcon" class="fa-solid fa-robot robot-icon"></i>
